@@ -132,6 +132,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void onClickDiv()
     {
+        Log.d("DivClicked", "OnClickDiv Pressed");
         double noOne = Double.parseDouble(m_eTxtNoOne.getText().toString());
         double noTwo = Double.parseDouble(m_eTxtNoTwo.getText().toString());
 
@@ -140,6 +141,6 @@ public class MainActivity extends AppCompatActivity {
         m_eTxtResult.setText(result);
     }
 
-    
+
 
 }
