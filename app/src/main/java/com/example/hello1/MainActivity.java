@@ -5,8 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Adapter;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     EditText m_eTxtNoOne;
     EditText m_eTxtNoTwo;
     TextView m_eTxtResult;
+    Spinner m_spinner;
+    EditText m_etValuta;
 
 
 
@@ -29,13 +34,30 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//Definerer hvilke knapper der er tale om.
+        //Definerer hvilke knapper der er tale om.
         m_eTxtNoOne = this.findViewById(R.id.eTxtNoOne);
         m_eTxtNoTwo = this.findViewById(R.id.eTxtNoTwo);
         m_eTxtResult = this.findViewById(R.id.txtResult);
 
         m_txtHello = this.findViewById(R.id.txtHello);
         m_eTxtName = this.findViewById(R.id.eTxtName);
+
+        //Valuta
+        m_etValuta = this.findViewById(R.id.etValuta);
+
+
+        m_spinner = this.findViewById(R.id.spinner1);
+
+
+
+        int spinner_pos = m_spinner.getSelectedItemPosition();
+        String[] valuta_values = getResources().getStringArray(R.array.valuta_values);
+        int size = Integer.valueOf(valuta_values[spinner_pos]);
+
+
+
+
+
 
         Button btnOk = this.findViewById(R.id.btnOk);
 
@@ -89,6 +111,15 @@ public class MainActivity extends AppCompatActivity {
                 onClickDiv();
             }
         });
+
+        Button btnCalculateValuta = this.findViewById(R.id.btnCalculateValuta);
+        btnCalculateValuta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickValutaCalculate();
+            }
+
+        });
     }
 
     private void onClickOk()
@@ -140,6 +171,30 @@ public class MainActivity extends AppCompatActivity {
 
         m_eTxtResult.setText(result);
     }
+
+    private void onClickValutaCalculate()
+    {
+
+        Log.d("Calculate clicked", "OnClickValutaCalculate()");
+        double valutaOne = Double.parseDouble(m_spinner.getSelectedItem().toString());
+        double valutaTwo = Double.parseDouble(m_etValuta.getText().toString());
+
+
+        String result = String.valueOf(valutaTwo * valutaOne);
+
+        m_eTxtResult.setText(result);
+
+   // spinner1     etValuta = værdien fra input text field
+
+        //Spinner mySpinner = (Spinner) findViewById(R.id.spinner1);
+       // String text = mySpinner.getSelectedItem().toString();
+
+    }
+
+
+
+    //Spinner _aka. dropdown
+
 
 
 

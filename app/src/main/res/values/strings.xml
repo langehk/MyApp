@@ -5,4 +5,10 @@
     <string name="sub">Subtract</string>
     <string name="multi">multi</string>
     <string name="div">div</string>
+    <string name="ValutaCalc">Calculate</string>
+    <string-array name="valuta_values">
+        <item>7</item>
+        <item>6</item>
+        <item>1000</item>
+    </string-array>
 </resources>
